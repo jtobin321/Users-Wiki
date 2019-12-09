@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import UserProfileCard from './components/UserProfileCard'
+import { isTemplateElement } from '@babel/types';
+
+export default class extends Component {
+  state = {
+    users: [],
+    hasErrors: false
+  }
+
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(res => res.json())
+    .then(res => this.setState({ users: res }))
+    .catch(() => this.setState({ hasErrors: true }))
+  }
+
+  render() {
+    return (
+      <div>
+        <div class="ui grid">
+          {this.state.users.map(user => {
+            return <UserProfileCard name={user.name} />
+          })}
+        </div>
+      </div>
+    );
+  }
 }
-
-export default App;
