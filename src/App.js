@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import UserProfileCard from './components/UserProfileCard'
-import { isTemplateElement } from '@babel/types';
 
 export default class extends Component {
   state = {
@@ -14,17 +13,25 @@ export default class extends Component {
     .then(res => res.json())
     .then(res => this.setState({ users: res }))
     .catch(() => this.setState({ hasErrors: true }))
-  }
+    }
+
 
   render() {
     return (
       <div>
-        <div class="ui grid">
+        <div class="ui grid" style={{padding: '50px'}}>
           {this.state.users.map(user => {
-            return <UserProfileCard name={user.name} />
+            return (
+              <UserProfileCard 
+                name={user.name} 
+                img={"https://api.adorable.io/avatars/300/" + user.id}
+                email={user.email}
+                description={user.company.catchPhrase}
+              />
+            )
           })}
         </div>
       </div>
-    );
+    )
   }
 }
