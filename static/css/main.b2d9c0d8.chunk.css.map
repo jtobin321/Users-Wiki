@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.css"],"names":[],"mappings":"AAAA,KACI,6HACJ,CAEA,cACI,wBACJ","file":"main.b2d9c0d8.chunk.css","sourcesContent":["body {\r\n    background-image: url('https://www.wallpaperflare.com/static/542/50/545/simple-background-blue-simple-minimalism-wallpaper.jpg');\r\n}\r\n\r\n.ui.container {\r\n    max-width: 75vw!important;\r\n}"]}
